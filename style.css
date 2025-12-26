@@ -1,0 +1,248 @@
+/* Responsive homepage stylesheet (style.css)
+   Replaces the original static styles with mobile-first responsive rules.
+   Breakpoints: mobile <=600px, tablet 601-1024px, desktop >=1025px.
+*/
+
+/* Reset / base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #DD4305, #01A1E3);
+  color: #071827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Card container */
+.container.kahoot {
+  height: 90%;
+  width: 90%;
+  max-width: 1600px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Home / Score area */
+.home, .score {
+  width: 100%;
+  text-align: center;
+}
+
+/* Headline */
+.home h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.home p {
+  margin-bottom: 20px;
+  font-size: 1.15rem;
+  color: rgba(7,24,39,0.7);
+}
+
+/* Inputs */
+.input {
+  padding: 14px;
+  width: 75%;
+  max-width: 320px;
+  border-radius: 12px;
+  border: none;
+  font-size: 1.05rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(7,24,39,0.04);
+}
+
+/* Buttons */
+button, .btn {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 14px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  display: inline-block;
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* Primary start button */
+.start-btn {
+  background: #ffcc00;
+  color: #000;
+  font-weight: 700;
+  width: 100%;
+  max-width: 360px;
+  border-radius: 12px;
+}
+
+/* Top bar / timer / question (kept for play page) */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+#counter { font-size: 1.05rem; font-weight: 700; color: #071827; }
+.timer {
+  width: 60%;
+  height: 12px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.timer-bar {
+  height: 100%;
+  width: 100%;
+  background: #ffcc00;
+  transition: width 1s linear;
+}
+
+/* Question and answers (play page) */
+.question {
+  font-size: 1.8rem;
+  margin-bottom: 22px;
+  text-align: center;
+  font-weight: 700;
+}
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.answer {
+  padding: 18px;
+  font-size: 1.05rem;
+  color: #fff;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Color variants */
+.red { background: #e53935; }
+.blue { background: #1e88e5; }
+.yellow { background: #fbc02d; color: #000; }
+.green { background: #43a047; }
+
+/* Feedback states */
+.correct { outline: 5px solid #00e676; }
+.wrong { opacity: 0.55; transform: scale(0.995); }
+
+/* Small text */
+.small { font-size: 0.95rem; color: rgba(7,24,39,0.65); }
+.small-muted { font-size: 0.95rem; color: rgba(7,24,39,0.65); }
+
+/* Utility */
+.hidden { display: none; }
+
+/* Focus outline for accessibility */
+:focus { outline: 3px solid rgba(255,191,71,0.95); outline-offset: 3px; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* -------------------------
+   Responsive breakpoints
+   Mobile-first: <=600px, Tablet 601-1024px, Desktop >=1025px
+   ------------------------- */
+
+/* Mobile (<=600px) */
+@media (max-width: 600px) {
+  .container.kahoot {
+    height: 70%;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 14px 36px rgba(0,0,0,0.28);
+  }
+
+  .home h1 { font-size: 2.2rem; }
+  .home p { font-size: 1rem; margin-bottom: 16px; }
+
+  .home-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .start-btn { max-width: 100%; padding: 12px; font-size: 1rem; border-radius: 12px; }
+
+  .answers { grid-template-columns: 1fr; gap: 12px; }
+  .question { font-size: 1.4rem; margin: 18px 0; }
+
+  .timer { width: 100%; }
+
+  .input { width: 90%; max-width: 320px; }
+
+  .top-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+/* Tablet (601px - 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .container.kahoot {
+    height: 70%;
+    max-width: 900px;
+    padding: 28px;
+    border-radius: 22px;
+  }
+
+  .home h1 { font-size: 2.6rem; }
+  .home p { font-size: 1.05rem; }
+
+  .home-actions { gap: 14px; }
+  .start-btn { max-width: 420px; }
+
+  .answers { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .question { font-size: 1.6rem; }
+
+  .timer { width: 70%; }
+}
+
+/* Desktop (>=1025px) */
+@media (min-width: 1025px) {
+  .container.kahoot {
+    width: 1400px;
+    padding: 36px;
+    border-radius: 28px;
+  }
+
+  .home h1 { font-size: 3.5rem; }
+  .home p { font-size: 1.2rem; }
+
+  .answers { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .question { font-size: 2rem; }
+}
+
+/* Ensure interactive elements have comfortable touch targets */
+button, .start-btn, .answer {
+  min-height: 48px;
+  min-width: 48px;
+  touch-action: manipulation;
+}

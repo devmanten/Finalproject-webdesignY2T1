@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Create Quiz — Quiz Time</title>
+  <link rel="stylesheet" href="create.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar" aria-label="Quizzes and questions">
+      <div class="sidebar-top" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h2>Quizzes</h2>
+        <button id="backBtn" class="btn" aria-label="Back">Back</button>
+      </div>
+
+      <div id="quizList" class="q-list" role="list"></div>
+
+      <div class="left-actions" style="margin-top:12px">
+        <button id="addQuizBtn" class="btn primary">+ New Quiz</button>
+        <button id="deleteQuizBtn" class="btn">Delete Quiz</button>
+      </div>
+
+      <hr style="border:none;height:1px;background:rgba(7,24,39,0.06);margin:12px 0">
+
+      <h3 style="margin:0 0 8px 0">Quiz Structure</h3>
+      <div id="questionList" class="q-list" role="list"></div>
+
+      <div class="left-actions" style="margin-top:12px">
+        <button id="addQ" class="btn primary">+ Add</button>
+        <button id="generateBtn" class="btn">Generate</button>
+      </div>
+
+      <div class="small-muted label" style="margin-top:12px">Title</div>
+      <input id="quizTitle" class="input" placeholder="Enter quiz title..." />
+    </aside>
+
+    <main id="main" class="editor" role="main" aria-labelledby="editorTitle">
+      <div class="title-row">
+        <h2 id="editorTitle">Create Question</h2>
+        <div class="editor-actions">
+          <button id="dupBtn" class="btn">Duplicate</button>
+          <button id="delBtn" class="btn">Delete</button>
+          <button id="saveBtn" class="btn primary">Save</button>
+        </div>
+      </div>
+
+      <label class="small-muted">Question</label>
+      <textarea id="qPrompt" placeholder="Start typing your question"></textarea>
+
+      <div class="media-section">
+        <label class="small-muted">Find and insert media</label>
+        <div id="mediaDrop" class="media-drop" tabindex="0" role="button" aria-label="Upload media">Upload file or drag here to upload</div>
+        <div id="mediaName" class="small-muted media-name" aria-live="polite"></div>
+        <input id="mediaFile" type="file" accept="image/*,audio/*,video/*" class="hidden" />
+      </div>
+
+      <div class="answers-section">
+        <label class="small-muted">Answers</label>
+        <div class="answers" id="answersGrid" role="list"></div>
+        <div class="small-muted hint">Add more answers is supported by editing choices in the right panel</div>
+      </div>
+
+      <div class="footer">
+        <button id="previewBtn" class="btn">Preview</button>
+      </div>
+    </main>
+
+    <aside class="panel" aria-label="Settings">
+      <h3>Settings</h3>
+
+      <div class="setting">
+        <label class="small-muted">Question type</label>
+        <select id="qType" class="input">
+          <option value="quiz">Quiz</option>
+          <option value="truefalse">True / False</option>
+          <option value="poll">Poll</option>
+        </select>
+      </div>
+
+      <div class="setting">
+        <label class="small-muted">Time limit</label>
+        <select id="qTime" class="input">
+          <option value="10">10s</option>
+          <option value="20">20s</option>
+          <option value="30">30s</option>
+          <option value="60">60s</option>
+        </select>
+        <div class="apply-row"><input id="applyAllTime" type="checkbox" /> <span class="small-muted">Apply to all questions</span></div>
+      </div>
+
+      <div class="setting">
+        <label class="small-muted">Points</label>
+        <select id="qPoints" class="input">
+          <option value="standard">Standard</option>
+          <option value="double">Double</option>
+          <option value="none">No points</option>
+        </select>
+      </div>
+
+      <div class="setting">
+        <label class="small-muted">Answer options</label>
+        <select id="answerMode" class="input">
+          <option value="single">Single select</option>
+          <option value="multiple">Multiple select</option>
+        </select>
+      </div>
+
+      <div class="apply-buttons">
+        <button id="applyBtn" class="btn">Apply</button>
+        <button id="applyAllBtn" class="btn">Apply to all</button>
+      </div>
+    </aside>
+  </div>
+
+  <script src="create.js"></script>
+</body>
+</html>

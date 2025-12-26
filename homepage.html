@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quizzicality</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" aria-label="Skip to main content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Skip to main</a>
+
+  <div class="container kahoot">
+    <main id="main" class="home" role="main" aria-labelledby="homeTitle">
+      <h1 id="homeTitle">Quizzicality</h1>
+      <p>Create quizzes or jump straight into a timed challenge</p>
+
+      <div class="home-actions" style="margin:18px 0;display:flex;flex-direction:column;gap:12px;align-items:center">
+        <a class="btn primary start-btn" id="btnPlay" href="play.html" role="button" aria-label="Play Quiz" style="width:100%;max-width:360px;text-align:center;display:inline-block">Play Quiz</a>
+        <a class="btn start-btn" id="btnCreate" href="create.html" role="button" aria-label="Create Quiz" style="width:100%;max-width:360px;text-align:center;display:inline-block">Create Quiz</a>
+      </div>
+
+      <div class="small-muted" style="margin-top:14px;text-align:center">
+        <div>Local, mobile-first quizzes • Scores stored locally</div>
+        <div style="margin-top:8px">Tip: create a quiz first, then open Play to run a timed session</div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Enter key triggers primary action (Play)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const play = document.getElementById('btnPlay');
+        if (play) play.click();
+      }
+    });
+
+    // Make anchor-role buttons keyboard-friendly
+    document.querySelectorAll('a[role="button"]').forEach(a => {
+      a.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') {
+          ev.preventDefault();
+          a.click();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

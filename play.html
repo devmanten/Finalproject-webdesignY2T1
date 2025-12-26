@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Play Quiz — Quiz Time</title>
+  <link rel="stylesheet" href="play.css">
+</head>
+<body>
+  <div class="play-container">
+    <header class="play-header">
+      <button id="backHome" class="btn" aria-label="Back">Back</button>
+      <h1 id="quizTitleDisplay">Quiz</h1>
+      <div class="score-box" aria-live="polite">
+        <div class="score-label">Score</div>
+        <div id="scoreValue" class="score-value">0</div>
+      </div>
+    </header>
+
+    <main id="main" class="play-area" role="main">
+      <div id="questionCard" class="question-card" role="region" aria-label="Question area">
+        <div class="q-top">
+          <div id="qText" class="q-text" aria-live="polite"></div>
+          <div class="timer-wrap" aria-hidden="false">
+            <div id="timerNumber" class="timer-number" aria-live="polite">00</div>
+            <div class="timer-bar-bg"><div id="timerBar" class="timer-bar" aria-hidden="true"></div></div>
+          </div>
+        </div>
+
+        <div id="qMedia" class="q-media" aria-hidden="false"></div>
+
+        <div id="answers" class="answers-list" role="list" aria-label="Answer choices"></div>
+
+        <div id="feedback" class="feedback hidden" role="status" aria-live="assertive"></div>
+      </div>
+
+      <aside id="questionNav" class="question-nav" aria-hidden="true">
+        <div id="qIndex" class="small-muted"></div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="play.js"></script>
+</body>
+</html>
